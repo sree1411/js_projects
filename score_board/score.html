@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #dd {
+        border: 1px solid black;
+        width: 200px;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="dd">
+      <h1 id="d1"></h1>
+      <button onclick="score('1')">One</button>
+      <button onclick="score('2')">Two</button>
+      <button onclick="score('3')">Three</button>
+      <button onclick="score('4')">Four</button>
+      <button onclick="score('5')">Five</button>
+      <button onclick="score('6')">Six</button>
+      <button onclick="score('w')">Wicket</button>
+    </div>
+    <script>
+      let wickets = 0;
+      let scored = 0;
+      let finalScore = `${wickets}/${scored}`;
+
+      function score(value) {
+        if (value === "w") {
+          if (wickets < 10) {
+            wickets = wickets + 1;
+          }
+        } else {
+          scored = Number(value) + scored;
+        }
+        finalScore = `${wickets}/${scored}`;
+        document.getElementById("d1").innerHTML = finalScore;
+      }
+      score("0");
+    </script>
+  </body>
+</html>
