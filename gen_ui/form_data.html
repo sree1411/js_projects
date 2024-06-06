@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form onsubmit="abc(event)" name="personform">
+      <label>Name </label>
+      <input type="text" id="name" name="name" /> <br />
+      <label>Gender</label> <br />
+      <input type="radio" name="gender" value="male" /> Male
+      <input type="radio" name="gender" value="female" /> FeMale
+      <input type="radio" name="gender" value="other" /> Other <br />
+      <label>Occupation </label>
+      <input type="text" id="occupation" name="occupation" /> <br />
+      <label>Age </label>
+      <input type="text" id="age" name="age" /> <br />
+      <button>Show student</button>
+    </form>
+    <table border="1">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Gender</td>
+          <td>Ocupation</td>
+          <td>Age</td>
+        </tr>
+      </thead>
+      <tbody id="tablebody">
+         
+      </tbody>
+    </table>
+
+    <script>
+      var employes = [
+        {
+          name: "sree",
+          gender: "Male",
+          ocupation: "Business",
+          age: "22",
+        },
+        {
+          name: "sree",
+          gender: "Male",
+          ocupation: "Business",
+          age: "22",
+        },
+      ];
+      GenTable()
+      function GenTable(){
+         employes.forEach((el)=>{
+           let tbody = document.getElementById('tablebody')
+           let tableRow = document.createElement('tr')
+           let tableData = document.createElement('td');
+           tableData.innerHTML = el.name
+           let tableData1 = document.createElement('td');
+           tableData1.innerHTML= el.gender
+           tableRow.append(tableData)
+           tableRow.append(tableData1)
+           tbody.append(tableRow)
+         })
+      }
+      
+    </script>
+  </body>
+</html>
