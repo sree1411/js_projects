@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="dd">welcome to the page</h1>
+    <button onclick="prev()">Prev Student</button>
+    <button onclick="next()">Next Student</button>
+  
+    <script>
+        var items = ["sree", "kanth", "renati"];
+        var currentIndex = 0;
+
+        function updateDisplay() {
+        document.getElementById('dd').innerHTML = items[currentIndex];
+         }
+      
+         function prev(){
+            currentIndex--;
+            if(currentIndex<0){
+                currentIndex = items.length - 1;
+                console.log(currentIndex)
+            }
+            updateDisplay()
+         }
+
+         function next(){
+            currentIndex++;
+            if(currentIndex >=items.length){
+                currentIndex = 0;
+                console.log(currentIndex)
+            }
+            updateDisplay()
+         }
+         
+      updateDisplay()
+
+
+
+    </script>
+  </body>
+</html>
