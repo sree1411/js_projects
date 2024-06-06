@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="similar.css">
+    <title>Document</title>
+</head>
+<body>
+      <div class="container">
+          <div class="card">
+            <div class="listitems">
+                <ul>
+                    <li><button class="btn" id="overviewBtn" onclick="showcontent('overview')" >Over view</button></li>
+                    <li><button class="btn" id="subjectBtn" onclick="showcontent('subject')">subjects</button></li>
+                    <li><button class="btn" id="timetableBtn" onclick="showcontent('timetable')">Time table</button></li>
+                    <li><button class="btn" id="projectBtn" onclick="showcontent('project')">Projects</button></li>
+                </ul>
+            </div>
+          </div>
+
+           
+          <div class="content" id="overview">
+             <h1> over view content </h1>
+             <p> over view content of the page </p>
+          </div>
+
+          <div class="content" id="subject">
+            <h1> subject information </h1>
+            <p>  subject information of the page </p>
+         </div>
+
+         <div class="content" id="timetable">
+            <h1> timetable of the course </h1>
+            <p>  timetable information of the page </p>
+         </div>
+         
+         <div class="content" id="project">
+            <h1> project of the course </h1>
+            <p>  project information of the page </p>
+         </div>
+
+      </div>
+
+       <script>
+         function showcontent(contentId){
+           
+         document.querySelectorAll('.content').forEach((el)=>{
+            el.classList.remove('active')
+         })
+
+         document.querySelectorAll('.btn').forEach((el)=>{
+            el.classList.remove('active')
+         })
+         
+
+
+         document.getElementById(contentId).classList.add('active')
+         document.getElementById(contentId+"Btn").classList.add('active')
+            
+         }
+         showcontent("overview")
+       </script>
+
+</body>
+</html>

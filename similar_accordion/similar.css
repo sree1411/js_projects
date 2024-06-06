@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.container{
+    border: 1px solid red;
+    width: 700px;
+    height: 600px;
+}
+
+.listitems ul {
+    display: flex;
+    justify-content: space-around;
+}
+.listitems ul li {
+    list-style: none;
+    margin-top: 10px;
+}
+.btn {
+    height: 30px;
+    background: none;
+    border-radius: 5px;
+    width: 100px;
+    border: 1px solid black;
+    cursor: pointer;
+ 
+}
+.btn.active{
+    background-color: cyan
+}
+.content{
+    border: 1px solid black;
+    margin-top: 50px;
+    display: none;
+}
+.content.active{
+    display: block;
+}
