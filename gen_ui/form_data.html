@@ -1,68 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <form onsubmit="abc(event)" name="personform">
-      <label>Name </label>
-      <input type="text" id="name" name="name" /> <br />
-      <label>Gender</label> <br />
-      <input type="radio" name="gender" value="male" /> Male
-      <input type="radio" name="gender" value="female" /> FeMale
-      <input type="radio" name="gender" value="other" /> Other <br />
-      <label>Occupation </label>
-      <input type="text" id="occupation" name="occupation" /> <br />
-      <label>Age </label>
-      <input type="text" id="age" name="age" /> <br />
-      <button>Show student</button>
-    </form>
-    <table border="1">
-      <thead>
-        <tr>
-          <td>Name</td>
-          <td>Gender</td>
-          <td>Ocupation</td>
-          <td>Age</td>
-        </tr>
-      </thead>
-      <tbody id="tablebody">
-         
-      </tbody>
-    </table>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+      <form onsubmit="abc(event)" name="empForm">
+          Name : <input type="text" id="name" name="name"> <br/>
+          Gender: <input type="radio" name="gender" value="male"> Male 
+                  <input type="radio" name="gender" value="female"> Female 
+                  <input type="radio" name="gender" value="other"> Other <br/>
+          Ocupation : <input type="text" name="occupation" id="occupation"> <br/>
+          Age  : <input type="text" name="age" id="age">  <br/>  
+          <button> Display content </button>    
+      </form>
 
-    <script>
-      var employes = [
-        {
-          name: "sree",
-          gender: "Male",
-          ocupation: "Business",
-          age: "22",
-        },
-        {
-          name: "sree",
-          gender: "Male",
-          ocupation: "Business",
-          age: "22",
-        },
-      ];
-      GenTable()
-      function GenTable(){
-         employes.forEach((el)=>{
-           let tbody = document.getElementById('tablebody')
-           let tableRow = document.createElement('tr')
-           let tableData = document.createElement('td');
-           tableData.innerHTML = el.name
-           let tableData1 = document.createElement('td');
-           tableData1.innerHTML= el.gender
-           tableRow.append(tableData)
-           tableRow.append(tableData1)
-           tbody.append(tableRow)
-         })
-      }
-      
-    </script>
-  </body>
+       <table border="1">
+           <thead>
+               <tr>
+                <th> Name </th>
+                <th> Gender </th>
+                <th> Occupation </th>
+                <th> Age</th>
+               </tr>
+           </thead>
+           <tbody id="tbody">
+              
+           </tbody>
+       </table>
+  
+       <script>
+          var employes = [
+              {
+                name:"sree",
+                gender:"male",
+                occupation:"business",
+                age:22
+              },
+              {
+                name:"virat",
+                gender:"male",
+                occupation:"cricket",
+                age:24
+              },
+          ]
+   
+         function genTable(){
+          document.getElementById("tbody").innerHTML = ""
+            employes.forEach((el)=>{
+              
+             let tableBody = document.getElementById("tbody")
+              
+             let tableRow = document.createElement('tr')
+             let tableHeader1 = document.createElement('td')
+             tableHeader1.innerHTML = el.name;
+
+             let tableHeader2 = document.createElement('td')
+             tableHeader2.innerHTML = el.gender;
+
+             let tableHeader3 = document.createElement('td')
+             tableHeader3.innerHTML = el.occupation;
+
+             let tableHeader4 = document.createElement('td')
+             tableHeader4.innerHTML = el.age;
+    
+              tableRow.append(tableHeader1);
+              tableRow.append(tableHeader2);
+              tableRow.append(tableHeader3);
+              tableRow.append(tableHeader4);
+              tableBody.append(tableRow);
+
+            })
+         }  
+         genTable()
+  
+            
+
+         function abc(e){
+            e.preventDefault();
+             
+          var newEmp ={
+            name:"",
+            age:"",
+            gender:"",
+            occupation:""
+          }
+          
+          var name = document.empForm.name.value
+          var age = document.empForm.age.value
+          var gender = document.empForm.gender.value;
+          var occupation = document.empForm.occupation.value;
+ 
+          newEmp.name = name;
+          newEmp.age = age;
+          newEmp.gender = gender;
+          newEmp.occupation = occupation;
+          employes.push(newEmp)
+          
+
+          document.empForm.name.value= "";
+          document.empForm.age.value ="";
+          document.empForm.occupation.value="";
+          document.empForm.gender.forEach(radio => {
+                radio.checked = false;
+            });
+          genTable();
+
+         }
+
+
+
+       </script>
+
+</body>
 </html>
