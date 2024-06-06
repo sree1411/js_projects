@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+        }
+        .d1{
+            border: 1px solid black;
+            width: 250px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+        <div class="container">
+            <div class="d1" id="d1">
+                <!-- <h1 id="content"></h1> -->
+           </div>
+           <div class="d1">
+               <button onclick="pushBtn()"> Push </button>
+               <button onclick="popBtn()"> Pop </button>
+           </div>
+        </div>
+      <script>
+           
+         let listItems = []
+
+   
+          function updateContent(){
+            document.getElementById("d1").innerHTML = ""
+            listItems.forEach((el)=>{
+                let res = document.getElementById("d1");
+                let createContent = document.createElement('h1')
+                createContent.innerHTML = el
+                res.append(createContent)
+            })
+          }
+
+
+          function pushBtn(){
+            let result = prompt("enter the text")
+             listItems.push(result)
+             console.log(listItems);
+             updateContent()
+          }
+
+          function popBtn(){
+            listItems.pop();
+            updateContent()
+          }
+
+updateContent()
+
+
+      </script>
+</body>
+</html>
