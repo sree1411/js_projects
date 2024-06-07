@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn{
+            background-color: white;
+        }
+        .btn.active{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <span id="Btn" class="btn" onclick="rate(1)">☆</span>
+    <span id="Btn" class="btn"  onclick="rate(2)">☆</span>
+    <span id="Btn" class="btn"  onclick="rate(3)">☆</span>
+    <span id="Btn" class="btn"  onclick="rate(4)">☆</span>
+    <span id="Btn" class="btn"  onclick="rate(5)">☆</span>
+     <h1> Total Rating :  <span id="dd"> </span></h1>
+     <script>
+        let ocupied = 0
+        const total = 5;
+        let finalScore = `${ocupied}/ ${total}`
+       
+         function rate(value){
+            ocupied = value;
+            const finalScore = `${ocupied}/${total}`;
+            document.getElementById('dd').innerHTML = finalScore
+            const stars = document.querySelectorAll('.btn')
+            stars.forEach((star, index)=>{
+               if(index < value){
+                star.classList.add('active');
+               }else{
+                star.classList.remove('active');
+               }
+            })
+        
+          
+         }
+         rate("0")
+
+
+     </script>
+</body>
+</html>
