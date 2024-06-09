@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form >
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" /> <br />
+
+      Gender: <input type="radio" id="gender" name="gender" value="male" /> Male
+              <input type="radio" id="gender"  name="gender" value="female" /> FeMale
+              <input type="radio" id="gender" name="gender" value="other" /> Other <br />
+
+      Age: <input type="text" name="age" id="age"/> <br />
+
+      Occupation: <input type="text" name="occupation" id="occupation" /> <br />
+
+      <button onclick="abc(event)">submit</button>
+    </form>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Age</th>
+          <th>Occupation</th>
+        </tr>
+      </thead>
+      <tbody id="Tbody">
+        
+      </tbody>
+    </table>
+
+
+      <script>
+
+
+
+       var students =[]
+
+       function gentable(){
+        document.getElementById("Tbody").innerHTML = ""
+       students.forEach((el)=>{
+        let tableBody = document.getElementById("Tbody")
+              
+              let tableRow = document.createElement('tr')
+              let tableHeader1 = document.createElement('td')
+              tableHeader1.innerHTML = el.name;
+ 
+              let tableHeader2 = document.createElement('td')
+              tableHeader2.innerHTML = el.gender;
+ 
+              let tableHeader3 = document.createElement('td')
+              tableHeader3.innerHTML = el.age;
+ 
+              let tableHeader4 = document.createElement('td')
+              tableHeader4.innerHTML = el.occupation;
+     
+               tableRow.append(tableHeader1);
+               tableRow.append(tableHeader2);
+               tableRow.append(tableHeader3);
+               tableRow.append(tableHeader4);
+               tableBody.append(tableRow);
+ 
+             })
+            }
+
+      gentable();
+
+        function abc(e){
+          e.preventDefault()
+          var name = document.getElementById("name").value;
+          var age = document.getElementById("age").value;
+          var gender = document.querySelector('input[name="gender"]:checked').value;
+          var occupation = document.getElementById("occupation").value;
+           students.push({name,age,gender, occupation});
+           gentable();
+           document.getElementById("name").value = ""
+        }
+     
+      </script>
+
+   
+  </body>
+</html>
