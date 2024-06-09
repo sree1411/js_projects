@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error{
+            color: red;
+        }
+        .hidden{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+      <form action="">
+          <table border="1">
+              <tr >
+                 <td>Firstname</td>
+                  <td>
+                    <input type="text" name="firstname" id="firstname" placeholder="enter the name">
+                    <span class="error hidden" id="firstnameError"> Firstname Required</span>
+
+                  </td>
+              </tr>
+
+              <tr>
+                <td>Last Name</td>
+                 <td>
+                   <input type="text" name="lastname" id="lastname" placeholder="enter the name">
+                   <span class="error hidden" id="lastnameError"> Last Name Required</span>
+                 </td>
+             </tr>
+             <tr>
+                <td>Date of Birth </td>
+                <td>
+                    <input type="date" name="dateofbirth" id="dateofbirth">
+                    <span class="error hidden" id="dobError"> Date of Birth Required</span>
+                </td>
+             </tr>
+             <tr>
+                <td> Gender </td>
+                <td>
+                    <input type="radio" name="gender" value="male"> Male  
+                    <input type="radio" name="gender" value="female"> feMale  
+                    <input type="radio" name="gender" value="other"> other
+                    <span class="error hidden" id="genderError"> Gender Required</span>
+                </td>
+             </tr>
+             <tr>
+                 <td> Technologies </td>
+                 <td>
+                    <input type="checkbox" name="technology" value="html"> HTML
+                    <input type="checkbox" name="technology" value="css"> CSS
+                    <input type="checkbox" name="technology" value="js"> JavaScript
+                    <input type="checkbox" name="technology" value="react"> React
+                    <span class="error hidden" id="techError"> Technologies Required</span>
+                 </td>
+             </tr>
+             <tr>
+                <td>Countries</td>
+                <td>
+                    <select name="country" id="country">
+                        <option value="">Select Country</option>
+                        <option value="india">India </option>
+                        <option value="america">america </option>
+                        <option value="canada">canada </option>
+                        <option value="australia">Australia </option>
+                    </select>
+                    <span class="error hidden" id="countryError"> Country Required</span>
+                </td>
+             </tr>
+             <tr>
+                <td>Comments </td>
+                <td>
+                    <textarea name="comment" id="comment"></textarea>
+                </td>
+               
+             </tr>
+              <tr>
+                <td>
+                    <button onclick="abc(event)"> submit</button>
+                </td>
+              </tr>
+          </table>
+
+      </form>
+
+      <table border="1">
+        <thead>
+          <tr>
+            <th>FirstName</th>
+            <th>lastname</th>
+            <th>dob</th>
+            <th>gender</th>
+            <th>Technologies</th>
+            <th>country</th>
+            <th>comments</th>
+
+
+          </tr>
+        </thead>
+        <tbody id="Tbody">
+          
+        </tbody>
+      </table>
+
+        
+
+
+
+     <script>
+         let students =[]
+
+         function gentable(){
+        document.getElementById("Tbody").innerHTML = ""
+       students.forEach((el)=>{
+        let tableBody = document.getElementById("Tbody")
+              
+              let tableRow = document.createElement('tr')
+              let tableHeader1 = document.createElement('td')
+              tableHeader1.innerHTML = el.firstname;
+ 
+              let tableHeader2 = document.createElement('td')
+              tableHeader2.innerHTML = el.lastname;
+ 
+              let tableHeader3 = document.createElement('td')
+              tableHeader3.innerHTML = el.dob;
+ 
+              let tableHeader4 = document.createElement('td')
+              tableHeader4.innerHTML = el.gender;
+
+              let tableHeader5 = document.createElement('td');
+            tableHeader5.innerHTML = el.technologies.join(', ');
+
+              let tableHeader6 = document.createElement('td')
+              tableHeader6.innerHTML = el.country;
+
+              let tableHeader7 = document.createElement('td')
+              tableHeader7.innerHTML = el.comments;
+     
+               tableRow.append(tableHeader1);
+               tableRow.append(tableHeader2);
+               tableRow.append(tableHeader3);
+               tableRow.append(tableHeader4);
+               tableRow.append(tableHeader5);
+               tableRow.append(tableHeader6);
+               tableRow.append(tableHeader7);
+
+               tableBody.append(tableRow);
+ 
+             })
+            }
+
+      gentable();
+
+
+       function validForm(){
+         var isValid = true;
+            var firstname = document.getElementById('firstname').value;
+            var lastname = document.getElementById('lastname').value;
+            var dob = document.getElementById('dateofbirth').value;
+            var gender = document.querySelector('input[name="gender"]:checked');
+            var technology = document.querySelectorAll('input[name="technology"]:checked');
+            var country = document.getElementById('country').value;
+            var comments = document.getElementById('comment').value;
+
+       
+            if(!firstname){
+                document.getElementById('firstnameError').classList.remove('hidden');
+                isValid = false
+            }else{
+                document.getElementById('firstnameError').classList.add('hidden');
+            }
+
+            if(!technology){
+                document.getElementById('techError').classList.remove('hidden');
+                isValid = false
+            }else{
+                document.getElementById('techError').classList.add('hidden');
+            }
+
+            return isValid;
+         
+       }
+
+
+
+
+          function abc(e){
+            e.preventDefault();
+
+            if(validForm()){
+                var firstname = document.getElementById('firstname').value;
+            var lastname = document.getElementById('lastname').value;
+            var dob = document.getElementById('dateofbirth').value;
+            var gender = document.querySelector('input[name="gender"]:checked').value;
+            var technology = Array.from(document.querySelectorAll('input[name="technology"]:checked')).map(tech => tech.value);
+            var country = document.getElementById('country').value;
+            var comments = document.getElementById('comment').value;
+
+            students.push({firstname,lastname, dob,gender, technologies: technology,country, comments})
+            gentable();
+            
+
+            }
+            
+          }
+     </script>
+
+
+</body>
+</html>
