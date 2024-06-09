@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .error {
+        color: red;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="studentForm">
+      Name :
+      <input type="text" name="name" id="name" placeholder="enter the name" />
+      <span class="error hidden" id="nameError"> Name Required</span> <br />
+
+      Gender : <input type="radio" name="gender" value="male" /> Male
+      <input type="radio" name="gender" value="female" /> FeMale
+      <input type="radio" name="gender" value="other" /> Other
+      <span class="error hidden" id="genderError"> Gender Required</span>
+      <br />
+
+      Age : <input type="text" name="age" id="age" />
+      <span class="error hidden" id="ageError"> Age Required</span> <br />
+      occupation: <input type="text" name="occupation" id="occupation" />
+      <span class="error hidden" id="occupationError">
+        occupation Required</span
+      >
+      <br />
+
+      <button onclick="abc(event)">Submit</button>
+    </form>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>age</th>
+          <th>gender</th>
+          <th>occupation</th>
+        </tr>
+      </thead>
+      <tbody id="Thead"></tbody>
+    </table>
+
+    <script>
+      let students = [];
+
+      function genTable() {
+        document.getElementById("Thead").innerHTML = "";
+        students.forEach((el) => {
+          let tableHead = document.getElementById("Thead");
+          let tableRow = document.createElement("tr");
+          let tableData1 = document.createElement("td");
+          let tableData2 = document.createElement("td");
+          let tableData3 = document.createElement("td");
+          let tableData4 = document.createElement("td");
+          tableData1.innerHTML = el.name;
+          tableData2.innerHTML = el.age;
+          tableData3.innerHTML = el.gender;
+          tableData4.innerHTML = el.occupation;
+
+          tableRow.append(tableData1);
+          tableRow.append(tableData2);
+          tableRow.append(tableData3);
+          tableRow.append(tableData4);
+
+          tableHead.append(tableRow);
+        });
+      }
+
+      function validForm() {
+        var isValid = true;
+
+        var name = document.getElementById("name").value;
+        var age = document.getElementById("age").value;
+        var gender = document.querySelector('input[name="gender"]:checked');
+        var occupation = document.getElementById("occupation").value;
+
+        if (!name) {
+          document.getElementById("nameError").classList.remove("hidden");
+          isValid = false;
+        } else {
+          document.getElementById("nameError").classList.add("hidden");
+        }
+
+        if (!age) {
+          document.getElementById("ageError").classList.remove("hidden");
+          isValid = false;
+        } else {
+          document.getElementById("ageError").classList.add("hidden");
+        }
+
+        if (!gender) {
+          document.getElementById("genderError").classList.remove("hidden");
+          isValid = false;
+        } else {
+          document.getElementById("genderError").classList.add("hidden");
+        }
+
+        if (!occupation) {
+          document.getElementById("occupationError").classList.remove("hidden");
+          isValid = false;
+        } else {
+          document.getElementById("occupationError").classList.add("hidden");
+        }
+
+        return isValid;
+      }
+
+      function abc(e) {
+        e.preventDefault();
+
+        if (validForm()) {
+          var name = document.getElementById("name").value;
+          var age = document.getElementById("age").value;
+          var gender = document.querySelector(
+            'input[name="gender"]:checked'
+          ).value;
+          var occupation = document.getElementById("occupation").value;
+          students.push({ name, age, gender, occupation });
+          console.log(name, age, gender, occupation);
+          genTable();
+          document.getElementById("studentForm").reset();
+        }
+      }
+    </script>
+  </body>
+</html>
