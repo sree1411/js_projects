@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          
+          #selectedImage{
+            width:100%;
+                height:400px;
+                background-position: center;background-size: contain;
+          }
+
+          .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div#imagesplace {
+    display: flex;
+    overflow-x:scroll;
+    height: 120px;
+    width: 650px;
+}
+            
+       
+    </style>
+</head>
+<body>
+      <div class="container">
+        <div id="selectedImage"></div>
+        <div id="imagesplace"></div>
+      </div>
+      <script>
+        var imgs = [
+                "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
+                "https://cdn.pixabay.com/photo/2018/08/14/13/23/ocean-3605547_1280.jpg",
+                "https://cdn.pixabay.com/photo/2016/03/04/19/36/beach-1236581_1280.jpg",
+                "https://cdn.pixabay.com/photo/2018/08/15/13/10/galaxy-3608029_1280.jpg",
+                "https://cdn.pixabay.com/photo/2015/04/23/21/59/tree-736875_1280.jpg",
+                "https://cdn.pixabay.com/photo/2015/06/19/20/13/sunset-815270_1280.jpg",
+                "https://cdn.pixabay.com/photo/2016/11/06/05/36/lake-1802337_1280.jpg",
+                "https://cdn.pixabay.com/photo/2015/04/23/21/59/hot-air-balloon-736879_1280.jpg",
+            "https://cdn.pixabay.com/photo/2013/10/02/23/03/mountains-190055_1280.jpg",
+                "https://images.freeimages.com/images/large-previews/2fd/new-york-1572527.jpg",
+                "https://images.freeimages.com/images/large-previews/e89/colorado-mountains-1545896.jpg",
+                "https://cdn.pixabay.com/photo/2023/07/14/10/30/de-havilland-tiger-moth-8126721_1280.jpg"
+            ]
+
+      
+            imgs.forEach((img)=>{
+     
+                let nimg = document.createElement('img')
+                nimg.src = img;
+                nimg.style.width="100px";
+                nimg.style.height="100px";
+                
+                nimg.onclick = function(el){
+                    var res = document.getElementById("selectedImage")
+                    res.style.backgroundImage = `url(${el.target.src})`
+                    console.log(el)
+                    
+                }
+
+                document.getElementById("imagesplace").append(nimg)
+             
+            }
+        )
+        
+        document.getElementById("selectedImage").style.backgroundImage = `url(${imgs[0]})`
+
+      </script>
+</body>
+</html>
