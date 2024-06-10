@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.min.css" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        
+        .item{
+            border: 1px solid red;
+        }
+        .item .question{
+            background-color: blue;
+        }
+
+        .item .answer{
+             color: red;
+             display: none;
+        }
+
+        .item.active .answer{
+            display: block;
+        }
+        .question{
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+        <h1> Accordion Example </h1>
+
+        <div class="container">
+              <div class="item">
+                  <div class="question">
+                    <h3> what is your name</h3> 
+                    <i class="bi bi-chevron-down"></i>
+                  
+                  </div>
+                  <div class="answer">
+                    <p> my name is sreekanth</p>
+                    
+                  </div>
+              </div>
+              <div class="item">
+                <div class="question">
+                  <h3> what is your name</h3>
+                  <i class="bi bi-chevron-down"></i>
+                </div>
+                <div class="answer">
+                  <p> my name is sreekanth</p>
+                </div>
+            </div>
+           
+        </div>
+        <script>
+   
+          let res = document.querySelectorAll('.item')
+          res.forEach((el)=>{
+             el.querySelector('.question').addEventListener('click', ()=>{
+                el.classList.toggle("active");
+             
+                let icon = el.querySelector('.bi')
+                if(el.classList.contains('active')){
+                    icon.classList.remove('bi-chevron-down')
+                    icon.classList.add('bi-chevron-up')
+
+                }else{
+                    icon.classList.add('bi-chevron-down')
+                    icon.classList.remove('bi-chevron-up')
+                }
+
+
+
+             })
+                 
+             
+          })
+
+        </script>
+</body>
+</html>
