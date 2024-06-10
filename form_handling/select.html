@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+       <h1> select option </h1>
+       <select name="country" onchange="countryselect(event)">
+         <option value="" default> select country</option>
+         <option value="india">India </option>
+         <option value="usa">Usa </option>
+         <option value="canada">Canada</option>
+       </select>
+       <h1> selected country is: <span id="dd"></span></h1>
+       <script>
+         function countryselect(e){
+          document.getElementById("dd").innerHTML = e.target.value
+         }
+       </script>
+</body>
+</html>

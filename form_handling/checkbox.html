@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <h1> Check Box example </h1>
+
+      <input type="checkbox" name="tech" value="html" onchange="showResult(event)"> Html 
+      <input type="checkbox" name="tech" value="css" onchange="showResult(event)"> Css 
+      <input type="checkbox" name="tech" value="js" onchange="showResult(event)"> Js
+      <input type="checkbox" name="tech" value="react" onchange="showResult(event)"> React 
+
+      <h1> Below are selected technologies</h1>
+      <ul id="ul-list">
+        
+      </ul>
+      <script>
+         
+    
+        let showtech = [];
+
+        function showResult(e){
+           let res = e.target.value
+  
+           if(e.target.checked === true){
+                showtech.push(res);
+           }else{
+               showtech =showtech.filter((el)=>{
+                   if(el !== res){
+                    return true
+                   }else{
+                    return false
+                   }
+                })
+           }
+
+           
+           document.getElementById("ul-list").innerHTML = "";
+           showtech.forEach((el)=>{
+    
+             let list = document.createElement('li')
+             list.innerHTML = el;
+             document.getElementById("ul-list").append(list)
+
+
+           })
+         
+        }
+
+
+
+      </script>
+
+</body>
+</html>

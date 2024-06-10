@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <h1> Radio Button </h1>
+     <input type="radio" onchange="showGender(event)" name="gender" value="male"> Male
+     <input type="radio" onchange="showGender(event)" name="gender" value="female"> female
+     <input type="radio"onchange="showGender(event)" name="gender" value="other"> Other
+   <h1> Seleceted gender is :  <span id="dd"> </span></h1>
+   <script>
+       function showGender(e){
+         let res = e.target.value;
+         document.getElementById("dd").innerHTML = res
+       }
+   </script>
+</body>
+</html>
