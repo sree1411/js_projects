@@ -1119,3 +1119,136 @@ var peoples = [
 
 //Print all names that starts with "p" and the firstname should be in UPPERCASE. e.g. PRAVEEN gubbala.
 //  peoples.filter((people)=>people.firstname.toLowerCase().startsWith("p")).forEach((people)=> console.log(`${people.firstname.toUpperCase()} ${people.lastname}`))
+ 
+// Write a program to print only numbers out of a given string
+// Example: let us take pr34s2v9q4
+// The output should be 3,4,2,9,4
+                
+// let inputString = "pr34s2v9q4";
+// let numbers = inputString.match(/\d/g)
+// if(numbers){
+//     console.log(numbers.join(','))
+// }else{
+//     console.log("not found")
+// }
+
+// Eliminate Duplicate characters in given string
+//         Example: ‘praveengubbala’ => ‘pravengubl’
+
+// function elimateDuplicate(input){
+//   let result = "";
+//   for(var char of input){
+//     if(!result.includes(char)){
+//         result = result + char
+//     }
+//   }
+//   return result;
+// }
+// let input = "praveendubbala"
+// let unique = elimateDuplicate(input)
+// console.log(unique)
+
+
+// Sort a given string
+        // Example: ‘praveen’=>’aeenprv’
+// let name = "praveen"
+// let res = name.split("").sort().join('');
+// console.log(res)
+ 
+// function formatCreditCardNumber(number) {
+//     return number.match(/.{1,4}/g).join('-');
+// }
+// console.log(formatCreditCardNumber('6484638463487486')); // "6484-6384-6348-7486"
+
+
+ 
+// function isValidCreditCard(number) {
+//     // Check if the length is 16
+//     if (number.length !== 16) {
+//         return 'invalid (must be 16 digits)';
+//     }
+    
+//     // Check if the input contains only digits
+//     if (!/^\d{16}$/.test(number)) {
+//         return 'invalid (must contain only numbers)';
+//     }
+    
+//     return 'valid';
+// }
+
+// let input1 = '7463836483647454';
+// let input2 = '74638364836474548';
+// let input3 = '7463836w4836o745';
+
+// console.log(isValidCreditCard(input1)); // Output: 'valid'
+// console.log(isValidCreditCard(input2)); // Output: 'invalid (must be 16 digits)'
+// console.log(isValidCreditCard(input3)); // Output: 'invalid (must contain only numbers)'
+
+
+// Check whether a given number is a valid phone numbe
+
+// function phoneNumber(num){
+//   if(num.length !== 10){
+//     return 'invalid (must be 10 digits)';
+//   }
+
+//   if (!/^\d{10}$/.test(num)){
+//     return 'invalid (must contain only numbers)';
+//   }
+//   return 'valid';
+// }
+// console.log(phoneNumber("123456789"))
+// console.log(phoneNumber("1234567891"))
+// console.log(phoneNumber("123456789s"))
+
+
+// Write a program to take a string and print only the numeric characters. Example: Input->‘Q1STR5684AK’; Output->‘15684’
+
+// let number = "Q1STR5684AK"
+// let res = number.match(/\d/g).join('')
+// console.log(res)  //15684
+
+// let number = "Q1STR5684AK"
+// let res = number.match(/\D/g).join('')
+// console.log(res)  //QSTRAK
+
+// Append the calling code of India(+91) to a given phone number. Example: Input-> '9876543210'; Output-> '+919876543210'
+
+
+// function phoneNumber(num){
+//   if(num.startsWith('0')){
+//      num = num.slice(1);
+//   }
+//   return '+91'+ num;
+// }
+ 
+// let res = phoneNumber("7396961806")
+// console.log(res)
+// let ph = res.match(/.{1,3}/g).join('-');
+// console.log(ph)
+ 
+
+// function countVowelsAndConsonants(name) {
+//     const vowels = name.match(/[aeiou]/gi) || [];
+//     const consonants = name.match(/[bcdfghjklmnpqrstvwxyz]/gi) || [];
+//     return { vowels: vowels, consonants: consonants };
+// }
+
+// const name = "sreekanth renati";
+// const counts = countVowelsAndConsonants(name);
+// console.log("Vowels:", counts.vowels);
+// console.log("Consonants:", counts.consonants);
+
+
+// function countVowelsAndConsonants(name) {
+//     const vowels = name.match(/[aeiou]/gi) || [];
+//     const consonants = name.match(/[bcdfghjklmnpqrstvwxyz]/gi) || [];
+//     return { vowels: vowels, consonants: consonants };
+// }
+//g is the globally and i is the case sensitive
+// const name = "sreekanth renati";
+// const counts = countVowelsAndConsonants(name);
+// console.log("Vowels:", counts.vowels);
+// console.log("Consonants:", counts.consonants);
+// const vowels = name.match(/[aeiouAEIOU]/g) || [];
+//accpts both lower and upper case

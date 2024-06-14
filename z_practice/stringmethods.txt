@@ -1,0 +1,244 @@
+Basic Metacharacters
+. (Dot)
+
+Matches any single character except newline.
+javascript
+Copy code
+let str = 'a1b2c3';
+let result = str.match(/./g);
+console.log(result); // ["a", "1", "b", "2", "c", "3"]
+^ (Caret)
+
+Matches the start of a string.
+javascript
+Copy code
+let str = 'abc123';
+let result = /^abc/.test(str);
+console.log(result); // true
+$ (Dollar)
+
+Matches the end of a string.
+javascript
+Copy code
+let str = '123abc';
+let result = /abc$/.test(str);
+console.log(result); // true
+* (Asterisk)
+
+Matches 0 or more repetitions of the preceding element.
+javascript
+Copy code
+let str = 'aaa';
+let result = str.match(/a*/g);
+console.log(result); // ["aaa", ""]
++ (Plus)
+
+Matches 1 or more repetitions of the preceding element.
+javascript
+Copy code
+let str = 'aaa';
+let result = str.match(/a+/g);
+console.log(result); // ["aaa"]
+? (Question Mark)
+
+Matches 0 or 1 repetition of the preceding element.
+javascript
+Copy code
+let str = 'abc';
+let result = str.match(/ab?/g);
+console.log(result); // ["ab"]
+| (Pipe)
+
+Alternation (logical OR).
+javascript
+Copy code
+let str = 'abc';
+let result = str.match(/a|b/g);
+console.log(result); // ["a", "b"]
+Character Classes
+\d
+
+Matches any digit (0-9).
+javascript
+Copy code
+let str = 'abc123';
+let result = str.match(/\d/g);
+console.log(result); // ["1", "2", "3"]
+\D
+
+Matches any non-digit character.
+javascript
+Copy code
+let str = 'abc123';
+let result = str.match(/\D/g);
+console.log(result); // ["a", "b", "c"]
+\w
+
+Matches any word character (alphanumeric + underscore).
+javascript
+Copy code
+let str = 'a_b123';
+let result = str.match(/\w/g);
+console.log(result); // ["a", "_", "b", "1", "2", "3"]
+\W
+
+Matches any non-word character.
+javascript
+Copy code
+let str = 'a_b 123';
+let result = str.match(/\W/g);
+console.log(result); // [" "]
+\s
+
+Matches any whitespace character (space, tab, newline).
+javascript
+Copy code
+let str = 'a b\tc\nd';
+let result = str.match(/\s/g);
+console.log(result); // [" ", "\t", "\n"]
+\S
+
+Matches any non-whitespace character.
+javascript
+Copy code
+let str = 'a b\tc\nd';
+let result = str.match(/\S/g);
+console.log(result); // ["a", "b", "c", "d"]
+Quantifiers
+{n}
+
+Matches exactly n occurrences of the preceding element.
+javascript
+Copy code
+let str = 'aaa';
+let result = str.match(/a{3}/g);
+console.log(result); // ["aaa"]
+{n,}
+
+Matches n or more occurrences.
+javascript
+Copy code
+let str = 'aaa';
+let result = str.match(/a{2,}/g);
+console.log(result); // ["aaa"]
+{n,m}
+
+Matches between n and m occurrences.
+javascript
+Copy code
+let str = 'aaa';
+let result = str.match(/a{2,3}/g);
+console.log(result); // ["aaa"]
+Groups and Ranges
+(abc)
+
+Matches the exact sequence abc.
+javascript
+Copy code
+let str = 'abcabc';
+let result = str.match(/(abc)/g);
+console.log(result); // ["abc", "abc"]
+[abc]
+
+Matches any one of the characters a, b, or c.
+javascript
+Copy code
+let str = 'abc123';
+let result = str.match(/[abc]/g);
+console.log(result); // ["a", "b", "c"]
+[^abc]
+
+Matches any character except a, b, or c.
+javascript
+Copy code
+let str = 'abc123';
+let result = str.match(/[^abc]/g);
+console.log(result); // ["1", "2", "3"]
+[a-z]
+
+Matches any lowercase letter.
+javascript
+Copy code
+let str = 'abcXYZ';
+let result = str.match(/[a-z]/g);
+console.log(result); // ["a", "b", "c"]
+[A-Z]
+
+Matches any uppercase letter.
+javascript
+Copy code
+let str = 'abcXYZ';
+let result = str.match(/[A-Z]/g);
+console.log(result); // ["X", "Y", "Z"]
+[0-9]
+
+Matches any digit.
+javascript
+Copy code
+let str = 'abc123';
+let result = str.match(/[0-9]/g);
+console.log(result); // ["1", "2", "3"]
+Assertions
+\b
+
+Matches a word boundary.
+javascript
+Copy code
+let str = 'word boundary word';
+let result = str.match(/\bword\b/g);
+console.log(result); // ["word", "word"]
+\B
+
+Matches a non-word boundary.
+javascript
+Copy code
+let str = 'sword boundary';
+let result = str.match(/\Bword\B/g);
+console.log(result); // null (no match)
+(?=abc)
+
+Positive lookahead, matches if abc follows.
+javascript
+Copy code
+let str = '1abc2abc3';
+let result = str.match(/\d(?=abc)/g);
+console.log(result); // ["1", "2"]
+(?!abc)
+
+Negative lookahead, matches if abc does not follow.
+javascript
+Copy code
+let str = '1abc2abc3';
+let result = str.match(/\d(?!abc)/g);
+console.log(result); // ["3"]
+Examples in Practice
+Extract digits from a string:
+
+javascript
+Copy code
+let str = 'pr34s2v9q4';
+let digits = str.match(/\d/g);
+console.log(digits); // ["3", "4", "2", "9", "4"]
+Remove duplicate characters from a string:
+
+javascript
+Copy code
+function removeDuplicates(str) {
+    return [...new Set(str)].join('');
+}
+console.log(removeDuplicates('praveengubbala')); // "pravengubl"
+Sort characters in a string:
+
+javascript
+Copy code
+let name = 'praveen';
+let sortedName = name.split('').sort().join('');
+console.log(sortedName); // "aeenprv"
+Format a credit card number:
+
+javascript
+Copy code
+function formatCreditCardNumber(number) {
+    return number.match(/.{1,4}/g).join('-');
+}
+console.log(formatCreditCardNumber('6484638463487486')); // "6484-6384-6348-7486"
