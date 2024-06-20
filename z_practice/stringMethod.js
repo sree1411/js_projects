@@ -4,6 +4,13 @@
 // $ asserts the end of the string.
 /*
 
-
-
 */
+
+let arr = [1,2,4,2,3,5,6,7,4,3,1]
+let res = arr.reduce((acc, curr)=>{
+    if(!acc.includes(curr)){
+        acc.push(curr);
+    }
+    return acc;
+}, [])
+console.log(res)

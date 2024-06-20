@@ -1252,3 +1252,35 @@ var peoples = [
 // console.log("Consonants:", counts.consonants);
 // const vowels = name.match(/[aeiouAEIOU]/g) || [];
 //accpts both lower and upper case
+
+
+// let arr = [1,2,4,2,3,5,6,7,4,3,1,5,6,5,7]
+// let dupi = []
+// let res = arr.reduce((acc, curr)=>{
+//     if(!acc.includes(curr)){
+//         acc.push(curr);
+//     }else if(!dupi.includes(curr)){
+//         dupi.push(curr);
+//     }
+//     return acc;
+// }, [])
+// console.log(res, "normal number")
+// console.log(dupi, "duplicate numbers")
+
+
+let arr = [1, 2, 4, 2, 3, 5, 6, 7, 4, 3, 1, 5, 6, 5, 7];
+let res = arr.reduce((acc, curr)=>{
+
+     if(acc[curr ===3]){
+        console.log(acc)
+     }
+     return acc;
+   
+ 
+    // acc[curr] = (acc[curr] || 0) + 1;
+    // return acc;
+
+
+}, {})
+ 
+console.log(res)
