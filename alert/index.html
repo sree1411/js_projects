@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+         <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+        <body>
+
+           
+              <div class="container" id="dd">
+                    <div id="heading"></div>
+                    <img id="img"  src="" alt="" width="50px">
+                  <button onclick="closeBtn()"> close</button>
+              </div>
+
+
+             <ul id="products">
+                
+             </ul>
+            <script>
+               
+              
+            
+                 
+                products.forEach((product)=>{
+                let mainDiv = document.getElementById("products")
+                let createLi = document.createElement('li')
+                createLi.innerHTML = `Title : ${product.title}`;
+                let createImg = document.createElement('img');
+                createImg.src = product.image;
+                createImg.style.width = "100px";
+                let createPrice = document.createElement('p')
+                createPrice.innerHTML = product.price
+                createLi.append(createPrice)
+                createLi.append(createImg)
+                mainDiv.append(createLi);
+
+                createLi.onclick =()=>{
+                    document.getElementById("dd").classList.add("active");
+                    let rect = event.target.getBoundingClientRect();   
+                    document.getElementById("dd").style.left = `${rect.left}px`;  
+                    document.getElementById("dd").style.top = `${rect.bottom}px`;
+                    document.getElementById("heading").innerHTML = product.title
+                    document.getElementById("img").src = product.image
+                    console.log(product.image)
+
+                    
+                     
+                }
+
+                 
+               })
+
+
+               function closeBtn(){
+                document.getElementById("dd").classList.remove("active")
+               }
+        
+
+              
+
+
+
+  
+
+
+
+
+
+
+            </script>
+        </body>
+    </head>
+</html>
